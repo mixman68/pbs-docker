@@ -14,5 +14,6 @@ services:
       - MSMTP_USER
       - MSMTP_PASSWORD
       - MSMTP_FROM
+      - PBS_ADMIN_PASSWORD
     ports:
      - "8007:8007"

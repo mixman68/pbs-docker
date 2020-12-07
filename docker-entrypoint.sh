@@ -5,9 +5,11 @@ set -e
 chown -R 34:34 /etc/proxmox-backup
 chmod -R 700 /etc/proxmox-backup
 
+if [ -z $PBS_ADMIN_PASSWORD ]; then export PBS_ADMIN_PASSWORD=admin; fi
+
 #Add a user
 if [ ! -f /etc/proxmox-backup/user.cfg ]; then
-    proxmox-backup-manager user create admin@pbs --password admin 
+    proxmox-backup-manager user create admin@pbs --password $PBS_ADMIN_PASSWORD 
     proxmox-backup-manager acl update / Admin --auth-id admin@pbs
 fi
 
