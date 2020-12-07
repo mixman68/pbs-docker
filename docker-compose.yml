@@ -4,5 +4,15 @@ services:
     #volumes: 
     #  - ./etc/cas/services:/etc/cas/services:rw
     build: .
+    environment:
+      - MSMTP_HOST
+      - MSMTP_PORT
+      - MSMTP_TLS
+      - MSMTP_STARTTLS
+      - MSMTP_TLSCHECK
+      - MSMTP_AUTH
+      - MSMTP_USER
+      - MSMTP_PASSWORD
+      - MSMTP_FROM
     ports:
      - "8007:8007"
