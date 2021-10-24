@@ -4,7 +4,7 @@ ADD http://download.proxmox.com/debian/proxmox-ve-release-6.x.gpg /etc/apt/trust
 
 #add key and apt install etc
 RUN chmod 644 /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg && echo "deb http://download.proxmox.com/debian/pbs buster pbs-no-subscription" > /etc/apt/sources.list.d/proxmox.list \
-    && apt-get update && apt-get install -y proxmox-backup-server=1.1.12-1 nfs-common supervisor msmtp-mta gettext-base \
+    && apt-get update && apt-get install -y proxmox-backup-server=1.1.13-3 nfs-common supervisor msmtp-mta gettext-base \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY msmtprc /etc/msmtprc
