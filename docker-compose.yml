@@ -1,8 +1,8 @@
 version: '3'
 services:
   pbs:
-    #volumes: 
-    #  - ./etc/cas/services:/etc/cas/services:rw
+    tmpfs:
+      - /run
     build: .
     environment:
       - MSMTP_HOST
