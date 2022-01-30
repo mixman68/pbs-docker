@@ -20,5 +20,5 @@ RUN chmod a+x /docker-entrypoint.sh && chsh -s /bin/bash backup
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/usr/bin/supervisord"]
-VOLUME [ "/etc/proxmox-backup", "/backups" ]
+VOLUME [ "/etc/proxmox-backup", "/backups", "/var/lib/proxmox-backup", "/var/log/proxmox-backup" ]
 STOPSIGNAL SIGINT

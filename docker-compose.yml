@@ -17,3 +17,14 @@ services:
       - PBS_ADMIN_PASSWORD
     ports:
      - "8007:8007"
+    volumes:
+      - pbs_etc:/etc/proxmox-backup
+      - pbs_log:/var/log/proxmox-backup
+      - pbs_lib:/var/lib/proxmox-backup
+      - pbs_backups:/backups
+
+volumes:
+  pbs_etc:
+  pbs_log:
+  pbs_lib:
+  pbs_backups:

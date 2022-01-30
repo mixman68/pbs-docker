@@ -2,7 +2,11 @@
 set -e
 
 #Fix perm (34 is backup)
+mkdir -p /etc/proxmox-backup
 chown -R 34:34 /etc/proxmox-backup
+chown -R 34:34 /var/lib/proxmox-backup
+chown -R 34:34 /var/log/proxmox-backup
+chown -R 34:34 /backups
 chmod -R 700 /etc/proxmox-backup
 
 if [ -z $PBS_ADMIN_PASSWORD ]; then export PBS_ADMIN_PASSWORD=admin; fi
