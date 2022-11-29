@@ -1,12 +1,18 @@
 #!/bin/bash
 set -e
 
-#Fix perm (34 is backup)
+#User mapping
+if [ -z $PUID ]; then export PUID=34; fi
+if [ -z $PGID ]; then export PGID=34; fi
+groupmod -o -g "$PGID" backup
+usermod -o -u "$PUID" backup
+
+#Fix perm
 mkdir -p /etc/proxmox-backup
-chown -R 34:34 /etc/proxmox-backup
-chown -R 34:34 /var/lib/proxmox-backup
-chown -R 34:34 /var/log/proxmox-backup
-chown -R 34:34 /backups
+chown -R backup:backup /etc/proxmox-backup
+chown -R backup:backup /var/lib/proxmox-backup
+chown -R backup:backup /var/log/proxmox-backup
+chown -R backup:backup /backups
 chmod -R 700 /etc/proxmox-backup
 
 if [ -z $PBS_ADMIN_PASSWORD ]; then export PBS_ADMIN_PASSWORD=admin; fi
@@ -29,5 +35,9 @@ if [ -z $MSMTP_PASSWORD ]; then export MSMTP_PASSWORD=; fi
 if [ -z $MSMTP_FROM ]; then export MSMTP_FROM=root@localhost; fi
 cp /etc/msmtprc /tmp/msmtprc.env
 envsubst < /tmp/msmtprc.env > /etc/msmtprc
+
+#Subst PUID/GID in supervisord
+cp /etc/supervisor/conf.d/supervisord.conf /tmp/supervisord.conf
+envsubst < /tmp/supervisord.conf > /etc/supervisor/conf.d/supervisord.conf
 
 exec "$@"
