@@ -1,6 +1,6 @@
 FROM debian:bullseye-slim
 
-ARG PBS_VERSION=2.4.1-1
+ARG PBS_VERSION=2.4.3-1
 
 ADD http://download.proxmox.com/debian/proxmox-release-bullseye.gpg /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg
 
