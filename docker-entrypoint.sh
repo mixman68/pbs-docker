@@ -41,6 +41,6 @@ cp /etc/supervisor/conf.d/supervisord.conf /tmp/supervisord.conf
 envsubst < /tmp/supervisord.conf > /etc/supervisor/conf.d/supervisord.conf
 
 # Remove lock files if present
-rm /etc/proxmox-backup/*.lock /etc/proxmox-backup/.*.lck
+rm -f /etc/proxmox-backup/*.lock /etc/proxmox-backup/.*.lck
 
 exec "$@"
