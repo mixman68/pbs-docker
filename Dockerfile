@@ -1,13 +1,13 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
-ARG PBS_VERSION=2.4.3-1
+ARG PBS_VERSION=3.0.2-1
 
-ADD http://download.proxmox.com/debian/proxmox-release-bullseye.gpg /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg
+ADD http://download.proxmox.com/debian/proxmox-release-bookworm.gpg /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg
 
 #add key and apt install etc
 RUN apt-get update \
     && apt install -y ifupdown2 \
-    && chmod 644 /etc/apt/trusted.gpg.d/proxmox-release-bullseye.gpg && echo "deb http://download.proxmox.com/debian/pbs bullseye pbs-no-subscription" > /etc/apt/sources.list.d/proxmox.list \
+    && chmod 644 /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg && echo "deb http://download.proxmox.com/debian/pbs bookworm pbs-no-subscription" > /etc/apt/sources.list.d/proxmox.list \
     && mkdir -p /var/lib/dhcp/ \
     && apt-get update \
     && apt-get install -y proxmox-backup-server=${PBS_VERSION} proxmox-backup-client=${PBS_VERSION} nfs-common supervisor msmtp-mta gettext-base \
