@@ -1,6 +1,6 @@
 FROM debian:bookworm
 
-ARG PBS_VERSION=3.0.2-1
+ARG PBS_VERSION=3.2.7-1
 
 ADD http://download.proxmox.com/debian/proxmox-release-bookworm.gpg /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg
 
