@@ -26,6 +26,8 @@ if [ -z $PBS_ADMIN_PASSWORD ]; then export PBS_ADMIN_PASSWORD=admin; fi
 if [ ! -f /etc/proxmox-backup/user.cfg ]; then
     proxmox-backup-manager user create admin@pbs --password $PBS_ADMIN_PASSWORD 
     proxmox-backup-manager acl update / Admin --auth-id admin@pbs
+
+    chown -R backup:backup /etc/proxmox-backup
 fi
 
 #Build MSMTPRC File
