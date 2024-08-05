@@ -38,3 +38,5 @@ Host SMTP password
 Host SMTP From
 ### PBS_ADMIN_PASSWORD
 PBS default password (change it after boot the container), 5 chars minimum, if less, then crash
+### PBS_FIXPERM
+If set to any values, apply fix permissions on PBS repo

@@ -9,11 +9,16 @@ usermod -o -u "$PUID" backup
 
 #Fix perm
 mkdir -p /etc/proxmox-backup
-chown -R backup:backup /etc/proxmox-backup
-chown -R backup:backup /var/lib/proxmox-backup
-chown -R backup:backup /var/log/proxmox-backup
-chown -R backup:backup /backups
-chmod -R 700 /etc/proxmox-backup
+if [ -z $PBS_FIXPERM ]; then 
+    echo "Skip fix perm"
+else
+    echo "Fix perm"
+    chown -R backup:backup /etc/proxmox-backup
+    chown -R backup:backup /var/lib/proxmox-backup
+    chown -R backup:backup /var/log/proxmox-backup
+    chown -R backup:backup /backups
+    chmod -R 700 /etc/proxmox-backup
+fi
 
 if [ -z $PBS_ADMIN_PASSWORD ]; then export PBS_ADMIN_PASSWORD=admin; fi
 
