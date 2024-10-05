@@ -6,7 +6,7 @@ ADD http://download.proxmox.com/debian/proxmox-release-bookworm.gpg /etc/apt/tru
 
 #add key and apt install etc
 RUN apt-get update \
-    && apt install -y ifupdown2 \
+    && apt-get install -y ifupdown2 \
     && chmod 644 /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg && echo "deb http://download.proxmox.com/debian/pbs bookworm pbs-no-subscription" > /etc/apt/sources.list.d/proxmox.list \
     && mkdir -p /var/lib/dhcp/ \
     && apt-get update \
