@@ -15,6 +15,7 @@ services:
       - MSMTP_PASSWORD
       - MSMTP_FROM
       - PBS_ADMIN_PASSWORD
+      - PBS_FIXPERM
       - PUID
       - PGID
     ports:
