@@ -1,6 +1,6 @@
 FROM debian:trixie
 
-ARG PBS_VERSION=4.0.14-1
+ARG PBS_VERSION=4.1.1-1
 ADD --chmod="0644" https://enterprise.proxmox.com/debian/proxmox-archive-keyring-trixie.gpg /usr/share/keyrings/proxmox-archive-keyring.gpg
 
 ADD proxmox.sources /etc/apt/sources.list.d/proxmox.sources
